@@ -22,7 +22,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # desired size of the output image
 imsize = 512 if torch.cuda.is_available() else 128  # use small size if no gpu
 
-print(imsize)
+# print(imsize)
 # scale imported image
 # transform it into a torch tensor
 loader = transforms.Compose([transforms.Resize(imsize),  transforms.ToTensor()])  
