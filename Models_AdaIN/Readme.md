@@ -1,6 +1,6 @@
 The Various models available.
 
-vgg_normalised.pth is the pre-trained vgg-19 model used in the implementation.
+vgg_normalised.pth is the pre-trained vgg-19 model used in the implementation. You can get the [file here](https://github.com/naoto0804/pytorch-AdaIN/releases) (shared by the unoffical implementation again). The decoder.pth and decoder_iter_160000.pth.tar are also available at the same link. 
 
 decoder.pth is the pre-trained model provided by the [AdaIN paper](https://github.com/xunhuang1995/AdaIN-style/tree/master) authors, whose original code is in Lua.
 
