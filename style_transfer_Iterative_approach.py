@@ -22,7 +22,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # desired size of the output image
 imsize = 512 if torch.cuda.is_available() else 128  # use small size if no gpu
 
-# print(imsize)
 # scale imported image
 # transform it into a torch tensor
 loader = transforms.Compose([transforms.Resize(imsize),  transforms.ToTensor()])  
@@ -133,7 +132,9 @@ class Normalization(nn.Module):
 # Here we insert the loss layer at the right spot
 
 # desired depth layers to compute style/content losses :
-content_layers_default = ['conv_5']
+content_layers_default = ['conv_5'] # We can try other layers in this iterative approach. 
+# However, no change will be really observed when we are using the start point as the content image itself, 
+# and starting from white noise requires many more iterations.
 style_layers_default = ['conv_1', 'conv_2', 'conv_3', 'conv_4', 'conv_5']
 
 def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
@@ -160,9 +161,7 @@ def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
             name = 'conv_{}'.format(i)
         elif isinstance(layer, nn.ReLU):
             name = 'relu_{}'.format(i)
-            # The in-place version doesn't play very nicely with the ContentLoss
-            # and StyleLoss we insert below. So we replace with out-of-place
-            # ones here.
+
             layer = nn.ReLU(inplace=False)
         elif isinstance(layer, nn.MaxPool2d):
             name = 'pool_{}'.format(i)
@@ -210,7 +209,7 @@ imshow(input_img, title='Input Image')
 #     optimizer = optim.LBFGS([input_img.requires_grad_()])
 #     return optimizer
 
-# a try with just adam optimizer
+# I am just using adam optimizer, works fine
 def get_input_optimizer(input_img):
     # this line to show that input is a parameter that requires a gradient
     optimizer = optim.AdamW([input_img.requires_grad_()])
@@ -276,6 +275,3 @@ imshow(output, title='Output Image')
 # sphinx_gallery_thumbnail_number = 4
 plt.ioff()
 plt.show()
-
-# TODO: We should have the output showing be in the run_style_transfer code 
-# since we can tell it to increase the number of steps if the image is not sharp enough
