@@ -1,6 +1,6 @@
 # Neural_Style_Transfer
 ## Credits
-An implementation of neural style transfer, the basic iterative approach and a more advanced approach using AdaIN (Adaptive Instance Normalization). The AdaIN implementation done here takes lots of inspiration (and knowledge and code) from [the unoffocial pytorch implementation of the paper](https://github.com/naoto0804/pytorch-AdaIN/tree/master?tab=readme-ov-file).
+An implementation of neural style transfer, the basic iterative approach and a more advanced approach using AdaIN (Adaptive Instance Normalization). The AdaIN implementation done here takes lots of inspiration (and knowledge and code) from [the unofficial pytorch implementation of the paper](https://github.com/naoto0804/pytorch-AdaIN/tree/master?tab=readme-ov-file).
 
 ## Requirements
 - Python 
