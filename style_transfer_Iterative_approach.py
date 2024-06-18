@@ -45,7 +45,7 @@ assert style_img.size() == content_img.size() #we need to import style and conte
 
 unloader = transforms.ToPILImage()  # reconvert into PIL image
 
-# plt.ion()
+plt.ion()
 
 # Helper function to show the tensor as a PIL image
 def imshow(tensor, title=None):
@@ -273,5 +273,5 @@ plt.figure()
 imshow(output, title='Output Image')
 
 # sphinx_gallery_thumbnail_number = 4
-# plt.ioff()
+plt.ioff()
 plt.show()
