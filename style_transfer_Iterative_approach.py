@@ -29,6 +29,7 @@ loader = transforms.Compose([transforms.Resize(imsize),  transforms.ToTensor()])
 # Helper function
 def image_loader(image_name):
     image = Image.open(image_name)
+    image = image.resize((imsize,imsize))
     # fake batch dimension required to fit network's input dimensions
     image = loader(image).unsqueeze(0)
     return image.to(device, torch.float)
@@ -37,15 +38,14 @@ def image_loader(image_name):
 # Loading of images
 content = input("Please enter full path of content image: ")
 style = input("Please enter full path of style image: ")
-style_img = image_loader(content)
-content_img = image_loader(style)
+content_img = image_loader(content)
+style_img = image_loader(style)
 
 assert style_img.size() == content_img.size() #we need to import style and content images of the same size
 
-
 unloader = transforms.ToPILImage()  # reconvert into PIL image
 
-plt.ion()
+# plt.ion()
 
 # Helper function to show the tensor as a PIL image
 def imshow(tensor, title=None):
@@ -196,7 +196,7 @@ def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
     return model, style_losses, content_losses
 
 input_img = content_img.clone()
-# if you want to use white noise instead uncomment the below line:
+# if you want to use white noise instead uncomment the below line, will take much longer to give a reasonable image
 # input_img = torch.randn(content_img.data.size(), device=device)
 
 # add the original input image to the figure:
@@ -273,5 +273,5 @@ plt.figure()
 imshow(output, title='Output Image')
 
 # sphinx_gallery_thumbnail_number = 4
-plt.ioff()
+# plt.ioff()
 plt.show()
