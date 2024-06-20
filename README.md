@@ -12,3 +12,8 @@ An implementation of neural style transfer, the basic iterative approach and a m
 To run the iterative approach, just run the python file on the terminal and provide the FULL path_name of the content and style images you want passed to the model.
 
 For testing the AdaIN approach, run the Testing with UI jupyter notebook, and ensure that the files in Requisite_python_files_for_AdaIN folder are in the same folder as the notebook. After running, the UI asks for input images that you can submit, and we get our output. To test the different decoders, change the decoder_path variable in the notebook to whichever one you would like to use.
+
+## Result Demo Videos
+[AdaIN implementation](https://drive.google.com/file/d/1ATpSPtodF_kgqynlUSKjscqu7RWgtmMe/view?usp=sharing)
+[Optimization launching](https://drive.google.com/file/d/1AgGgyHRMSicH61B3Yy4lltNF3dDMRAsf/view?usp=sharing)
+[Optimization Result](https://drive.google.com/file/d/1Agu52pa3F_I9ccTq4QyBDi5F9J1T0urH/view?usp=sharing)
